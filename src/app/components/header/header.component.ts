@@ -12,5 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   title = 'To-Do List';
-
+  addTask(){
+    console.log("add!")
+  }
 }
