@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { TASKS } from 'src/app/mock-task';
 import { Task } from 'src/app/task';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
@@ -12,6 +13,7 @@ export class TaskItemComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+  faTrashCan = faTrashCan
 
   public isChecked = false;
 

@@ -18,24 +18,25 @@
 .checked{
     display:flex;
     flex-direction: column;
-    background-color: #2b2b2b;
+    background-color: rgba(43, 43, 43, 0.7);
     border-radius: 20px;
-    border: 1px solid #f2f3f7;
+    border: 1px solid rgba(242, 243, 247, 0.7);
     width: 400px;
     overflow:hidden;
     padding: 15px;
     margin-top: 20px;
     row-gap: 20px;
-    opacity: 50%;
     cursor: pointer;
 }
 
 .checked .header h3{
     text-decoration: line-through;
+    opacity: 50%;
 }
 
 .checked p{
     text-decoration: line-through;
+    opacity: 50%;
 }
 .header{
     display: flex;
@@ -52,4 +53,12 @@
     justify-content: center;
     align-items: center;
     column-gap: 10px; 
+}
+
+#buttons{
+    display:flex;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
 }

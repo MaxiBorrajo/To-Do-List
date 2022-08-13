@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonTaskComponent } from './components/button-task/button-task.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ButtonDeleteComponent } from './components/button-delete/button-delete.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
     HeaderComponent,
     ButtonTaskComponent,
     TasksComponent,
-    TaskItemComponent
+    TaskItemComponent,
+    ButtonDeleteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
