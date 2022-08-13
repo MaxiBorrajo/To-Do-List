@@ -1,7 +1,14 @@
 <header>
-    <h1>{{title}}</h1>
-    <app-button-task color="#e94531" 
-    text="Add Task"
-    (btnClick)="addTask()"
-    ></app-button-task>
+    <div class="container">
+        <div class="row_1">
+            <h1>{{title}}</h1>
+            <app-button-task color="#e94531" 
+            text="Add Task"
+            (btnClick)="addTask()"
+            ></app-button-task>
+        </div>
+        <div class="row_2">
+            <app-tasks></app-tasks>
+        </div>
+    </div>
 </header>
