@@ -9,6 +9,7 @@
     padding: 15px;
     margin-top: 20px;
     row-gap: 20px;
+    color:#f2f3f7;
     cursor: pointer;
 }
 
@@ -27,6 +28,7 @@
     margin-top: 20px;
     row-gap: 20px;
     cursor: pointer;
+    color:#f2f3f7
 }
 
 .checked .header h3{
@@ -61,4 +63,9 @@
     justify-content: center;
     align-items: center;
     column-gap: 10px;
+}
+
+#trash:hover{
+    color: #e94531;
+    cursor: pointer;
 }

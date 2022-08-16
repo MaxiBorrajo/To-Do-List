@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@ang
 import { TASKS } from 'src/app/mock-task';
 import { Task } from 'src/app/task';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
@@ -9,7 +10,7 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 })
 export class TaskItemComponent implements OnInit {
   @Input() task:Task = TASKS[0];
-  constructor(private renderer: Renderer2) { 
+  constructor(private renderer: Renderer2, private router:Router) { 
   }
   ngOnInit(): void {
   }
@@ -17,13 +18,17 @@ export class TaskItemComponent implements OnInit {
 
   public isChecked = false;
 
-  @ViewChild('Task')
-  Task!: ElementRef;
-  @ViewChild('checkbox')
-  checkbox!: ElementRef;
+  // @ViewChild('Task')
+  // Task!: ElementRef;
+  // @ViewChild('checkbox')
+  // checkbox!: ElementRef;
 
   checked(){
     this.isChecked = !this.isChecked;
+  }
+
+  editTask(){
+    this.router.navigate(['/editTask'])
   }
 
  }

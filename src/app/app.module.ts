@@ -9,7 +9,12 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonDeleteComponent } from './components/button-delete/button-delete.component';
-
+import { TaskService } from './service/task.service';
+import {HttpClientModule} from '@angular/common/http';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { ErrorComponent } from './components/error/error.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,14 +22,19 @@ import { ButtonDeleteComponent } from './components/button-delete/button-delete.
     ButtonTaskComponent,
     TasksComponent,
     TaskItemComponent,
-    ButtonDeleteComponent
+    ButtonDeleteComponent,
+    AddTaskComponent,
+    EditTaskComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

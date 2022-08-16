@@ -1,6 +1,6 @@
-<div class="task" [class.checked]="isChecked">
+<div class="task" [class.checked]="isChecked" (click)="editTask()">
     <div class="header">
-        <h3>{{task.text}}</h3>
+        <h3>{{task.title}}</h3>
         <div id='buttons'>
             <div *ngIf="isChecked; else checkbox" id="completed">
                 <span>Completed</span>
@@ -9,8 +9,9 @@
             <ng-template #checkbox>
                 <input type="checkbox" (click)="checked()" style="cursor: pointer;">
             </ng-template>
-            <fa-icon [icon]="faTrashCan"></fa-icon>
+            <fa-icon [icon]="faTrashCan" id="trash"></fa-icon>
         </div>
     </div>
+    <p>{{task.text}}</p>
     <p>Created on <span style="color:#ae221a">{{task.day}}</span> at <span style="color:#e94531">{{task.time}}</span></p>
 </div>
