@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { TASKS } from 'src/app/mock-task';
 import { Task } from 'src/app/task';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TaskItemComponent implements OnInit {
   @Input() task:Task = TASKS[0];
+  @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter()
   constructor(private renderer: Renderer2, private router:Router) { 
   }
   ngOnInit(): void {
@@ -29,6 +30,10 @@ export class TaskItemComponent implements OnInit {
 
   editTask(){
     this.router.navigate(['/editTask'])
+  }
+
+  onDelete(task:Task){
+    this.onDeleteTask.emit(task);
   }
 
  }

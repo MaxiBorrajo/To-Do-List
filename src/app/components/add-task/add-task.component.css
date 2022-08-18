@@ -57,3 +57,27 @@
 .btn:hover{
     outline: 2px solid #f2f3f7;
 }
+
+.btn_add{
+    background-color: #e94531;
+    font-weight: 400;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.reminder{
+    background-color: #e94531;
+    font-weight: 400;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    outline: 2px solid #f2f3f7
+}
+
+
+.btn_add:hover{
+    outline: 2px solid #f2f3f7
+}

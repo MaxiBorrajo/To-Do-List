@@ -8,6 +8,9 @@
             <label for="task">Write a task: </label>
             <textarea name="task" cols="30" rows="10" [(ngModel)]="description"></textarea>
         </div>
+        <div class="btn_reminder">
+            <button class="btn_add" (click)="addReminder()" [class.reminder]="reminder">Add reminder <fa-icon [icon]="faBell"></fa-icon></button>
+        </div>
         <button class="btn" (click)="addTask()">Add</button>
     </form>
 </div>

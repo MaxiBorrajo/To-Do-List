@@ -1,4 +1,4 @@
-<div class="task" [class.checked]="isChecked" (click)="editTask()">
+<div class="task" [class.checked]="isChecked" [ngClass]="{reminder: task.reminder}">
     <div class="header">
         <h3>{{task.title}}</h3>
         <div id='buttons'>
@@ -9,7 +9,7 @@
             <ng-template #checkbox>
                 <input type="checkbox" (click)="checked()" style="cursor: pointer;">
             </ng-template>
-            <fa-icon [icon]="faTrashCan" id="trash"></fa-icon>
+            <fa-icon [icon]="faTrashCan" id="trash" (click)="onDelete(task)"></fa-icon>
         </div>
     </div>
     <p>{{task.text}}</p>
