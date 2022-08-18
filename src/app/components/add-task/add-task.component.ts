@@ -16,13 +16,22 @@ export class AddTaskComponent implements OnInit {
   title:string = '';
   description:string = '';
   Tasks: Task[] = []
-  date: Date = new Date();
+  today = new Date();
   reminder: boolean = false
   constructor(private router:Router, private taskService:TaskService) {}
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(tasks=>{
       this.Tasks = tasks
     })
+  }
+  addZero(i:number) {
+    let j = ""
+    if (i < 10){
+      j = "0" + i;
+    }else{
+      j=String(i)
+    }
+    return j;
   }
   addReminder(){
     this.reminder = !this.reminder
@@ -32,14 +41,14 @@ export class AddTaskComponent implements OnInit {
       id: this.Tasks.length + 1,
       title: this.title,
       text: this.description,
-      day: this.date.getDate() + "/" + this.date.getMonth() + "/" + this.date.getFullYear(),
-      time: this.date.getHours() + ":" + this.date.getMinutes(),
-      reminder: this.reminder
+      day: this.today.getDate() + "/" + this.addZero(this.today.getMonth() + 1) + "/" + this.today.getFullYear(),
+      time: this.today.getHours() + ":" + this.addZero(this.today.getMinutes()),
+      reminder: this.reminder,
+      completed: false
     }
     this.taskService.addTask(task).subscribe(resp=>{
       console.log('good')
-    })
-     this.router.navigate(['']);
+    });
   }
 
 }

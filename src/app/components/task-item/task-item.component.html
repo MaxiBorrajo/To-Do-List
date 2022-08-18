@@ -1,6 +1,9 @@
 <div class="task" [class.checked]="isChecked" [ngClass]="{reminder: task.reminder}">
     <div class="header">
-        <h3>{{task.title}}</h3>
+        <div class="title">
+            <h3>{{task.title}}</h3>
+            <fa-icon [icon]="faPenToSquare" [routerLink]="['/editTask', task.id]" id="edit"></fa-icon>
+        </div>
         <div id='buttons'>
             <div *ngIf="isChecked; else checkbox" id="completed">
                 <span>Completed</span>

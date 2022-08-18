@@ -10,24 +10,26 @@
     margin-top: 20px;
     row-gap: 20px;
     color:#f2f3f7;
-    cursor: pointer;
 }
 
 .task.reminder{
     border: 3px solid #e94531;
+}
+
+.task.reminder.checked{
+    border: 3px solid rgba(233, 69, 49, 0.7);
 }
 .checked{
     display:flex;
     flex-direction: column;
     background-color: rgba(43, 43, 43, 0.7);
     border-radius: 20px;
-    border: 1px solid rgba(242, 243, 247, 0.7);
+    border: 3px solid rgba(242, 243, 247, 0.7);
     width: 400px;
     overflow:hidden;
     padding: 15px;
     margin-top: 20px;
     row-gap: 20px;
-    cursor: pointer;
     color:#f2f3f7
 }
 
@@ -50,22 +52,15 @@
     font-size: 25px;
 }
 
-#completed{
+#completed, #buttons, .title{
     display:flex;
     justify-content: center;
     align-items: center;
     column-gap: 10px; 
 }
 
-#buttons{
-    display:flex;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 10px;
-}
 
-#trash:hover{
+#trash:hover, #edit:hover{
     color: #e94531;
     cursor: pointer;
 }

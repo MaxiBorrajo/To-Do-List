@@ -5,4 +5,5 @@ export interface Task{
     day:string;
     time:string;
     reminder:boolean;
+    completed:boolean;
 }

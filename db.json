@@ -2,27 +2,57 @@
   "tasks": [
     {
       "id": 1,
-      "title": "Finish laundry",
-      "text": "",
+      "title": "Finish laundryy",
+      "text": "holaaaazzzzzzzzzz",
       "day": "12/08/22",
       "time": "17:00",
-      "reminder": true
+      "reminder": true,
+      "completed": true
     },
     {
       "id": 2,
-      "title": "Go to the gym",
-      "text": "Try new routine",
-      "day": "12/08/22",
-      "time": "10:00",
-      "reminder": false
+      "title": "tr",
+      "text": "tyezgbdfhbfa",
+      "day": "18/08/2022",
+      "time": "13:55",
+      "reminder": false,
+      "completed": false
     },
     {
       "id": 3,
-      "title": "Stretching",
-      "text": "30 seg per stretch",
-      "day": "12/08/22",
-      "time": "23:00",
-      "reminder": true
+      "title": "Ahora",
+      "text": "si bb",
+      "day": "18/08/2022",
+      "time": "13:55",
+      "reminder": false,
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Creo que arranco",
+      "text": "putooooooooooooooooooo",
+      "day": "18/08/2022",
+      "time": "16:31",
+      "reminder": true,
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "",
+      "text": "",
+      "day": "18/08/2022",
+      "time": "16:35",
+      "reminder": false,
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "",
+      "text": "zcgbfdzhad",
+      "day": "18/08/2022",
+      "time": "16:35",
+      "reminder": false,
+      "completed": false
     }
   ]
 }

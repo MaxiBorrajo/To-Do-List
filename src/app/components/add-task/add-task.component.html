@@ -11,6 +11,6 @@
         <div class="btn_reminder">
             <button class="btn_add" (click)="addReminder()" [class.reminder]="reminder">Add reminder <fa-icon [icon]="faBell"></fa-icon></button>
         </div>
-        <button class="btn" (click)="addTask()">Add</button>
+        <button class="btn" (click)="addTask()" [routerLink]="['']">Add</button>
     </form>
 </div>

@@ -7,7 +7,8 @@ export const TASKS:Task[] = [
         text:'',
         day: '12/08/22',
         time: '17:00',
-        reminder: true
+        reminder: true,
+        completed: false,
     },
     {
         id:2,
@@ -15,7 +16,8 @@ export const TASKS:Task[] = [
         text:'Try new routine',
         day: '12/08/22',
         time: '10:00',
-        reminder: false
+        reminder: false,
+        completed: true,
     },
     {
         id:3,
@@ -23,7 +25,8 @@ export const TASKS:Task[] = [
         text:"30 seg per stretch",
         day: '12/08/22',
         time: '23:00',
-        reminder: true
+        reminder: true,
+        completed: false,
     },
 
 ]
