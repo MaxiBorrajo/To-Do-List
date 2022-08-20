@@ -9,10 +9,9 @@ import { TaskService } from 'src/app/service/task.service';
 export class TasksComponent implements OnInit {
   Tasks: Task[] = []
   constructor( private taskService: TaskService) { }
-
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(tasks=>{
-      this.Tasks = tasks
+    this.Tasks = tasks
     })
   }
 

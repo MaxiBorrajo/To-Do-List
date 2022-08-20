@@ -1,4 +1,4 @@
-<div class="task" [class.checked]="isChecked" [ngClass]="{reminder: task.reminder}">
+<div class="task" [class.checked]="isChecked">
     <div class="header">
         <div class="title">
             <h3>{{task.title}}</h3>
@@ -7,14 +7,25 @@
         <div id='buttons'>
             <div *ngIf="isChecked; else checkbox" id="completed">
                 <span>Completed</span>
-                <input type="checkbox" (click)="checked()" checked style="cursor: pointer;">
+                <input type="checkbox" (click)="checked(task)" checked style="cursor: pointer;">
             </div>
             <ng-template #checkbox>
-                <input type="checkbox" (click)="checked()" style="cursor: pointer;">
+                <input type="checkbox" (click)="checked(task)" style="cursor: pointer;">
             </ng-template>
             <fa-icon [icon]="faTrashCan" id="trash" (click)="onDelete(task)"></fa-icon>
         </div>
     </div>
     <p>{{task.text}}</p>
     <p>Created on <span style="color:#ae221a">{{task.day}}</span> at <span style="color:#e94531">{{task.time}}</span></p>
+    <div *ngIf="task.reminder && (expireDate() > today)">
+        <p>Final date: {{task.expire | date:'dd/MM/yy'}}</p>
+    </div>
+    <div *ngIf="task.reminder && equal()">
+        <p style="color:#e94531">This task expires <strong>today!</strong></p>
+    </div>
+    <div *ngIf="task.reminder && isLate()">
+        <p>This task has expired :(</p>
+        <p style="color:#ae221a">You are late: {{daysLate()}} days</p>
+    </div>
+    
 </div>

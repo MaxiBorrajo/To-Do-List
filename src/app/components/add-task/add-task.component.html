@@ -1,16 +1,39 @@
 <div class="container">
-    <form>
+    <form [formGroup]="addNewTask">
         <div class="title">
             <label for="title">Title: </label>
-            <input type="text" name="title" [(ngModel)]="title" >
+            <input type="text" name="title" formControlName="title" [class.warning]="addNewTask.controls.title.invalid && addNewTask.controls.title.touched">
+            <div *ngIf="addNewTask.controls.title.invalid && addNewTask.controls.title.touched">
+                <p style="color:#e94531">This field can't be empty</p>
+            </div>
         </div>
         <div class="task">
             <label for="task">Write a task: </label>
-            <textarea name="task" cols="30" rows="10" [(ngModel)]="description"></textarea>
+            <textarea name="task" cols="30" rows="10" formControlName="description"></textarea>
         </div>
         <div class="btn_reminder">
-            <button class="btn_add" (click)="addReminder()" [class.reminder]="reminder">Add reminder <fa-icon [icon]="faBell"></fa-icon></button>
+            <button class="btn_add" (click)="addReminder()" [class.reminder]="reminder">{{addDeadline()}}</button>
         </div>
-        <button class="btn" (click)="addTask()" [routerLink]="['']">Add</button>
+        <div class="expire" *ngIf="reminder">
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a deadline</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="date" [(ngModel)]="expire">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="addNewTask.controls.date.errors">
+                <p>You need to choose a valid date</p>
+            </div>
+        </div>
+        <button type="submit" class="btn" (click)="addTask()"
+         [routerLink]="['']" 
+         [disabled]="(addNewTask.controls.date.invalid && reminder) ||
+          (addNewTask.controls.title.invalid && addNewTask.controls.title.touched)
+           || addNewTask.controls.title.value == '' " 
+          [class.disable]="(addNewTask.controls.date.invalid && reminder) ||
+           (addNewTask.controls.title.invalid && addNewTask.controls.title.touched)
+            || addNewTask.controls.title.value == '' ">
+           Add</button>
     </form>
 </div>

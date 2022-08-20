@@ -41,7 +41,8 @@ export class EditTaskComponent implements OnInit {
       day: Task.day,
       time: Task.time,
       reminder: this.reminder,
-      completed: Task.completed
+      completed: Task.completed,
+      expire: new Date(),
     };
     this.taskService.editTask(task).subscribe(resp=>{
       console.log('good')

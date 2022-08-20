@@ -13,7 +13,11 @@ import {HttpClientModule} from '@angular/common/http';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { ErrorComponent } from './components/error/error.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import {MatNativeDateModule} from '@angular/material/core'
+import {MatInputModule} from '@angular/material/input'
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +35,11 @@ import { FormsModule } from '@angular/forms';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

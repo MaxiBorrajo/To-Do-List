@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 export class TaskService {
   constructor(private httpClient:HttpClient) {
   }
+  today = new Date();
   Tasks: Task[] = [];
   TASK:Task = {
     id: 0,
@@ -17,7 +18,8 @@ export class TaskService {
     day: '',
     time: '',
     reminder: false,
-    completed: false
+    completed: false,
+    expire:new Date(),
   }
   private apiUrl = 'http://localhost:5000/tasks'
   getTasks():Observable<Task[]>{
@@ -52,5 +54,15 @@ export class TaskService {
     })
     console.log(this.Tasks[i-1])
     return this.Tasks[i-1]
+  }
+
+  addZero(i:number) {
+    let j = ""
+    if (i < 10){
+      j = "0" + i;
+    }else{
+      j=String(i)
+    }
+    return j;
   }
 }

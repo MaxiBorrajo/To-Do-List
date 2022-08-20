@@ -81,3 +81,27 @@
 .btn_add:hover{
     outline: 2px solid #f2f3f7
 }
+
+.expire{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.disable{
+    background-color: rgba(233, 69, 49, 0.5);
+    font-weight: 600;
+}
+
+.disable:hover{
+    outline: none;
+}
+
+.warning{
+    width: 85%;
+    height: 40px;
+    font-weight: 500;
+    background-color: transparent;
+    border: 2px solid #e94531;
+    border-radius: 5px;
+}

@@ -4,6 +4,7 @@ import { Task } from 'src/app/task';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { Router } from '@angular/router';
 import { TaskService } from 'src/app/service/task.service';
+import { coerceStringArray } from '@angular/cdk/coercion';
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
@@ -15,31 +16,54 @@ export class TaskItemComponent implements OnInit {
   constructor(private renderer: Renderer2, private router:Router, private taskService: TaskService) { 
   }
   ngOnInit(): void {
+    this.isChecked = this.task.completed
   }
+  today = this.taskService.today;
   faTrashCan = faTrashCan
   faPenToSquare = faPenToSquare
-  // @ViewChild('Task')
-  // Task!: ElementRef;
-  // @ViewChild('checkbox')
-  // checkbox!: ElementRef;
-
   isChecked:boolean = false;
-  
-  checked(){
-    // let Task:Task = {
-    //   id: task.id,
-    //   title:task.title,
-    //   text: task.text,
-    //   day: task.day,
-    //   time: task.time,
-    //   reminder: task.reminder,
-    //   completed: !task.completed
-    // };
+  checked(task:Task){
     this.isChecked = !this.isChecked;
+    let Task: Task = {
+      id: task.id,
+      title: task.title,
+      text: task.text,
+      day: task.day,
+      time: task.time,
+      reminder: task.reminder,
+      completed: !task.completed,
+      expire: task.expire
+    }
+    this.taskService.editTask(Task).subscribe(resp=>{
+      console.log('good')
+    });
   }
-
   onDelete(task:Task){
     this.onDeleteTask.emit(task);
   }
 
+  expireDate(){
+    return new Date(this.task.expire)
+  }
+
+  equal(){
+    let expire = this.expireDate()
+    return ((this.today.getFullYear() == expire.getFullYear()) &&
+    (this.today.getMonth() == expire.getMonth()) &&
+    (this.today.getDate() == expire.getDate()))
+  }
+
+  isLate(){
+    let expire = this.expireDate()
+    return ((this.today.getFullYear() > expire.getFullYear()) ||
+    (this.today.getMonth() > expire.getMonth()) ||
+    (this.today.getDate() > expire.getDate()))
+  }
+
+  daysLate(){
+    let daysLateMs = Number(this.today) - Number(this.expireDate())
+    let oneDayMs = 86400000
+    let daysLate = Math.round(daysLateMs/oneDayMs)
+    return daysLate
+  }
  }

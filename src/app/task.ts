@@ -6,4 +6,5 @@ export interface Task{
     time:string;
     reminder:boolean;
     completed:boolean;
+    expire:Date;
 }
