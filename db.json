@@ -2,43 +2,36 @@
   "tasks": [
     {
       "id": 1,
-      "title": "Prueba",
-      "text": "",
-      "day": "20/08/2022",
-      "time": "19:20",
+      "title": "Go to run",
+      "text": "Run 10000 km",
+      "day": "21/08/2022",
+      "time": "15:01",
       "reminder": true,
       "completed": false,
-      "expire": "2023-12-31T03:00:00.000Z"
+      "expire": "2022-08-21T18:02:34.831Z",
+      "type": 2
     },
     {
       "id": 2,
-      "title": "fjhgdjd",
-      "text": "",
-      "day": "20/08/2022",
-      "time": "19:35",
+      "title": "Practice angular",
+      "text": "Finish task list",
+      "day": "21/08/2022",
+      "time": "15:03",
       "reminder": true,
       "completed": false,
-      "expire": "2022-08-30T03:00:00.000Z"
+      "expire": "2022-08-22T03:00:00.000Z",
+      "type": 1
     },
     {
       "id": 3,
-      "title": "adsgasd",
-      "text": "",
-      "day": "20/08/2022",
-      "time": "19:43",
+      "title": "Sleep",
+      "text": "8 hours",
+      "day": "21/08/2022",
+      "time": "15:10",
       "reminder": true,
       "completed": false,
-      "expire": "2022-08-20T22:43:16.361Z"
-    },
-    {
-      "id": 4,
-      "title": "dgfh",
-      "text": "",
-      "day": "20/08/2022",
-      "time": "20:26",
-      "reminder": true,
-      "completed": false,
-      "expire": "2016-06-07T03:00:00.000Z"
+      "expire": "2022-08-04T03:00:00.000Z",
+      "type": 0
     }
   ]
 }

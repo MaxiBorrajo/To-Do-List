@@ -4,33 +4,12 @@
     background-color: #2b2b2b;
     border-radius: 20px;
     border: 3px solid #f2f3f7;
-    width: 400px;
-    overflow:hidden;
+    width: auto;
     padding: 15px;
     margin-top: 20px;
     row-gap: 20px;
     color:#f2f3f7;
-}
-
-.task.reminder{
-    border: 3px solid #e94531;
-}
-
-.task.reminder.checked{
-    border: 3px solid rgba(233, 69, 49, 0.7);
-}
-.checked{
-    display:flex;
-    flex-direction: column;
-    background-color: rgba(43, 43, 43, 0.7);
-    border-radius: 20px;
-    border: 3px solid rgba(242, 243, 247, 0.7);
-    width: 400px;
-    overflow:hidden;
-    padding: 15px;
-    margin-top: 20px;
-    row-gap: 20px;
-    color:#f2f3f7
+    overflow: hidden;
 }
 
 .checked .header h3{
@@ -46,28 +25,68 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    height: auto;
+    column-gap: 20px;
 }
 
 .header h3{
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
 }
 
-#completed, #buttons, .title{
+#completed, .title{
     display:flex;
     justify-content: center;
-    align-items: center;
+    align-items:baseline;
+    column-gap: 10px; 
+}
+
+#buttons{
+    display:flex;
+    justify-content: center;
+    align-items:center;
     column-gap: 10px; 
 }
 
 
 #trash:hover, #edit:hover{
-    color: #e94531;
     cursor: pointer;
+    opacity: 70%;
 }
 
 .dates{
     display: flex;
-    align-items: center;
-    column-gap: 15px;
-    font-size: 15px;
+    align-items:baseline;
+    font-size: 12px;
+    justify-content: space-between;
+    column-gap: 10px;
+    text-align: center;
+}
+
+.important{
+    background-color: #8a382e;
+    border: 3px solid #a0221b;
+}
+.Task{
+    background-color: #486e88;
+    border: 3px solid #65b2e5;  
+}
+.not-forget{
+    background-color: #547039;
+    border: 3px solid #88c74a;
+}
+
+.important.checked{
+    background-color: rgba(138, 56, 46, 0.7);
+    border: 3px solid rgba(160, 34, 27, 0.7);
+}
+.Task.checked{
+    background-color: rgba(72, 110, 136, 0.7);
+    border: 3px solid rgba(101, 178, 229, 0.7);
+}
+.not-forget.checked{
+    background-color: rgba(84, 112, 57, 0.7);
+    border: 3px solid rgba(136, 199, 74, 0.7);
 }

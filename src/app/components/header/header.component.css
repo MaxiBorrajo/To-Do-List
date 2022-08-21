@@ -6,14 +6,14 @@ header{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: 800px;
     row-gap: 50px;
 }
 
 .row_1{
     display:flex;
     justify-content: space-between;
-    width: 100%;
+    column-gap: 50px;
 }
 
 .row_2{
@@ -25,5 +25,6 @@ header{
 
 
 h1{
-    font-size: 37px;
+    font-size: 50px;
+    font-weight: bold;
 }

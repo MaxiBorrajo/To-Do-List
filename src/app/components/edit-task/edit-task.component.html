@@ -1,16 +1,61 @@
 <div class="container">
-    <form>
+    <form [formGroup]="editTask">
         <div class="title">
-            <label for="title">Title: </label>
-            <input type="text" name="title" [(ngModel)]="title" value="title">
+            <div class="inputTitle">
+                <label for="title">Title: </label>
+                <input type="text" name="title" formControlName="title" value="title"
+                [class.warning]="(getTitle()?.invalid && getTitle()?.touched)">
+            </div>
+            <div *ngIf="(getTitle()?.invalid && getTitle()?.touched)" id="titleInvalid">
+                <p style="color:#e94531">This field can't be empty</p>
+            </div>
         </div>
         <div class="task">
             <label for="task">Write a task: </label>
-            <textarea name="task" cols="30" rows="10" [(ngModel)]="description" value="description"></textarea>
+            <textarea name="task" cols="30" rows="10" formControlName="description"></textarea>
+        </div>
+        <div class="type">
+            <label for="type">Choose a type:</label>
+            <div class="chooses">
+                <div class="first-opt">
+                    <p>Important:</p>
+                    <button class="important" (click)="setImportant()" [class.active]="getType()?.value == 1"></button>
+                </div>
+                <div class="second-opt">
+                    <p>Task:</p>
+                    <button class="Task" (click)="setTask()" [class.active]="getType()?.value == 0"></button>
+                </div>
+                <div class="third-opt">
+                    <p>Not forget:</p>
+                    <button class="not-forget" (click)="setNotForget()" [class.active]="getType()?.value == 2"></button>
+                </div>
+            </div>
         </div>
         <div class="btn_reminder">
-            <button class="btn_edit" (click)="addReminder()" [class.reminder]="reminder">Add reminder <fa-icon [icon]="faBell"></fa-icon></button>
+            <button class="btn" (click)="addReminder()" [class.reminder]="reminder">{{addDeadline()}}</button>
         </div>
-        <button class="btn" (click)="saveEdit()" [routerLink]="['']">Save Changes</button>
+        <div class="expire" *ngIf="reminder">
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a deadline</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="getDate()?.errors" >
+                <p id="dateInvalid">You need to choose a valid date</p>
+            </div>
+        </div>
+        <button type="submit" class="btn" (click)="saveChanges()"
+         [routerLink]="['']" 
+         [disabled]="(getDate()?.invalid && reminder) ||
+          (getTitle()?.invalid && getTitle()?.touched)
+           || getTitle()?.value == '' " 
+          [class.disable]="(getDate()?.invalid && reminder) ||
+           (getTitle()?.invalid && getTitle()?.touched)
+            || getTitle()?.value == '' ">
+           Add
+        </button>
     </form>
 </div>
+

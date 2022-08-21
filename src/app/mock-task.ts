@@ -10,6 +10,7 @@ export const TASKS:Task[] = [
         reminder: true,
         completed: false,
         expire: new Date(),
+        type: 0,
     },
     {
         id:2,
@@ -20,6 +21,7 @@ export const TASKS:Task[] = [
         reminder: false,
         completed: true,
         expire:new Date(),
+        type: 0,
     },
     {
         id:3,
@@ -30,6 +32,7 @@ export const TASKS:Task[] = [
         reminder: true,
         completed: false,
         expire:new Date(),
+        type: 0,
     },
 
 ]

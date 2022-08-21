@@ -1,18 +1,46 @@
 <div class="container">
     <form [formGroup]="addNewTask">
         <div class="title">
-            <label for="title">Title: </label>
-            <input type="text" name="title" formControlName="title" [class.warning]="addNewTask.controls.title.invalid && addNewTask.controls.title.touched">
-            <div *ngIf="addNewTask.controls.title.invalid && addNewTask.controls.title.touched">
-                <p style="color:#e94531">This field can't be empty</p>
+            <div class="inputTitle">
+                <label for="title">Title: </label>
+                <input type="text" name="title" formControlName="title" value="title"
+                [class.warning]="(getTitle()?.invalid && getTitle()?.touched)">
+            </div>
+            <div *ngIf="(getTitle()?.errors && getTitle()?.touched)" id="titleInvalid">
+                <div *ngIf="getTitle()?.errors?.['maxlength']">
+                    <p style="color:#e94531">20 characters Max</p>
+                </div>
+                <div *ngIf="getTitle()?.hasError('required')">
+                    <p style="color:#e94531">This field can't be empty</p>
+                </div>
             </div>
         </div>
         <div class="task">
-            <label for="task">Write a task: </label>
+            <label for="task">Write a description: </label>
             <textarea name="task" cols="30" rows="10" formControlName="description"></textarea>
+            <div *ngIf="getDescription()?.errors?.['maxlength']" id="textInvalid">
+                <p style="color:#e94531">220 characters Max</p>
+            </div>
+        </div>
+        <div class="type">
+            <label for="type">Choose a type:</label>
+            <div class="chooses">
+                <div class="first-opt">
+                    <p>Important:</p>
+                    <button class="important" (click)="setImportant()" [class.active]="getType()?.value == 1"></button>
+                </div>
+                <div class="second-opt">
+                    <p>Task:</p>
+                    <button class="Task" (click)="setTask()" [class.active]="getType()?.value == 0"></button>
+                </div>
+                <div class="third-opt">
+                    <p>Not forget:</p>
+                    <button class="not-forget" (click)="setNotForget()" [class.active]="getType()?.value == 2"></button>
+                </div>
+            </div>
         </div>
         <div class="btn_reminder">
-            <button class="btn_add" (click)="addReminder()" [class.reminder]="reminder">{{addDeadline()}}</button>
+            <button class="btn" (click)="addReminder()" [class.reminder]="reminder">{{addDeadline()}}</button>
         </div>
         <div class="expire" *ngIf="reminder">
             <mat-form-field appearance="fill">
@@ -22,18 +50,19 @@
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
-            <div *ngIf="addNewTask.controls.date.errors">
+            <div *ngIf="getDate()?.errors" id="dateInvalid">
                 <p>You need to choose a valid date</p>
             </div>
         </div>
         <button type="submit" class="btn" (click)="addTask()"
          [routerLink]="['']" 
-         [disabled]="(addNewTask.controls.date.invalid && reminder) ||
-          (addNewTask.controls.title.invalid && addNewTask.controls.title.touched)
-           || addNewTask.controls.title.value == '' " 
-          [class.disable]="(addNewTask.controls.date.invalid && reminder) ||
-           (addNewTask.controls.title.invalid && addNewTask.controls.title.touched)
-            || addNewTask.controls.title.value == '' ">
-           Add</button>
+         [disabled]="(getDate()?.invalid && reminder) ||
+          (getTitle()?.invalid && getTitle()?.touched)
+           || getTitle()?.value == '' || getDescription()?.errors?.['maxlength']" 
+          [class.disable]="(getDate()?.invalid && reminder) ||
+           (getTitle()?.invalid && getTitle()?.touched)
+            || getTitle()?.value == '' || getDescription()?.errors?.['maxlength']">
+           Add
+        </button>
     </form>
 </div>

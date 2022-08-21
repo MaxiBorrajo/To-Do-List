@@ -4,7 +4,8 @@ import { Task } from 'src/app/task';
 import { TaskService } from 'src/app/service/task.service';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DateValidation } from './dateValidation';
+import { DateValidation } from '../add-task/dateValidation'
+
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
@@ -12,13 +13,15 @@ import { DateValidation } from './dateValidation';
 })
 export class AddTaskComponent implements OnInit {
   addNewTask = new FormGroup({
-    title: new FormControl('', Validators.required),
-    description: new FormControl(''),
-    date: new FormControl(new Date(), DateValidation.isValid)
+    title: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+    description: new FormControl('', Validators.maxLength(880)),
+    date: new FormControl(new Date(), DateValidation.isValid),
+    type: new FormControl(0)
   });
   faBell = faBell
   Tasks: Task[] = []
   reminder: boolean = false
+  active:boolean = false;
   expire:Date = new Date();
   constructor(private router:Router, private taskService:TaskService) {}
   ngOnInit(): void {
@@ -58,7 +61,7 @@ export class AddTaskComponent implements OnInit {
     if (this.getDescription()?.value == ""){
       return ""
     }else{
-      return this.getDescription()
+      return this.getDescription()?.value
     }
   }
 
@@ -71,7 +74,8 @@ export class AddTaskComponent implements OnInit {
       time: this.taskService.today.getHours() + ":" + this.taskService.addZero(this.taskService.today.getMinutes()),
       reminder: this.reminder,
       completed: false,
-      expire: this.isReminder()
+      expire: this.isReminder(),
+      type: this.getType()?.getRawValue(),
     }
     this.addNewTask.get('date')?.reset(new Date())
     this.taskService.addTask(task).subscribe(resp=>{
@@ -87,6 +91,19 @@ export class AddTaskComponent implements OnInit {
   }
   getDate(){
     return this.addNewTask.get('date')
+  }
+  getType(){
+    return this.addNewTask.get('type')
+  }
+
+  setImportant(){
+    this.getType()?.setValue(1)
+  }
+  setTask(){
+    this.getType()?.setValue(0)
+  }
+  setNotForget(){
+    this.getType()?.setValue(2)
   }
 
 }

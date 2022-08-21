@@ -7,4 +7,5 @@ export interface Task{
     reminder:boolean;
     completed:boolean;
     expire:Date;
+    type:Number;
 }

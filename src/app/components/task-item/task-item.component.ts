@@ -32,7 +32,8 @@ export class TaskItemComponent implements OnInit {
       time: task.time,
       reminder: task.reminder,
       completed: !task.completed,
-      expire: task.expire
+      expire: task.expire,
+      type: task.type
     }
     this.taskService.editTask(Task).subscribe(resp=>{
       console.log('good')
@@ -54,10 +55,10 @@ export class TaskItemComponent implements OnInit {
   }
 
   isLate(){
-    let expire = this.expireDate()
-    return ((this.today.getFullYear() > expire.getFullYear()) ||
-    (this.today.getMonth() > expire.getMonth()) ||
-    (this.today.getDate() > expire.getDate()))
+    let daysLateMs = Number(this.today) - Number(this.expireDate())
+    let oneDayMs = 86400000
+    let daysLate = Math.round(daysLateMs/oneDayMs)
+    return daysLate > 0
   }
 
   daysLate(){
