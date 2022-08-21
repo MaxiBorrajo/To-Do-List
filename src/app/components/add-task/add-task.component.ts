@@ -22,7 +22,8 @@ export class AddTaskComponent implements OnInit {
   Tasks: Task[] = []
   reminder: boolean = false
   active:boolean = false;
-  expire:Date = new Date();
+  today:any = new Date();
+  currentDate:Date = new Date(this.today.getFullYear(), this.today.getMonth(), (this.today.getDate()+1))
   constructor(private router:Router, private taskService:TaskService) {}
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(tasks=>{
@@ -51,7 +52,7 @@ export class AddTaskComponent implements OnInit {
 
   isReminder(){
     if (this.reminder){
-      return this.expire
+      return this.getDate()?.getRawValue()
     }else{
       return new Date();
     }

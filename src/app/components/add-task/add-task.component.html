@@ -45,7 +45,7 @@
         <div class="expire" *ngIf="reminder">
             <mat-form-field appearance="fill">
                 <mat-label>Choose a deadline</mat-label>
-                <input matInput [matDatepicker]="picker1" formControlName="date" [(ngModel)]="expire">
+                <input matInput [matDatepicker]="picker1" formControlName="date" min="{{currentDate | date:'yyyy-MM-dd'}}">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>

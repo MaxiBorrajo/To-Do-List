@@ -20,6 +20,8 @@ export class EditTaskComponent implements OnInit {
   time:string = '';
   reminder:boolean = false;
   completed:boolean = false;
+  today:any = new Date();
+  currentDate:Date = new Date(this.today.getFullYear(), this.today.getMonth(), (this.today.getDate()+1))
   editTask = new FormGroup({
     title: new FormControl('', Validators.required),
     description: new FormControl(''),
