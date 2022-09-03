@@ -1,6 +1,6 @@
 import { NumberFormatStyle } from '@angular/common';
 import { DeclareFunctionStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from 'src/app/service/task.service';
@@ -12,7 +12,8 @@ import { DateValidation } from '../add-task/dateValidation';
   styleUrls: ['./edit-task.component.css']
 })
 export class EditTaskComponent implements OnInit {
-  constructor(private router:Router, private route:ActivatedRoute, private taskService:TaskService) {
+  constructor(private router:Router, private route:ActivatedRoute, private taskService:TaskService,
+    private changeDetector:ChangeDetectorRef) {
   }
   i:number=0;
   id:number = 0;
@@ -28,17 +29,23 @@ export class EditTaskComponent implements OnInit {
     date: new FormControl(new Date(), DateValidation.isValid),
     type: new FormControl(0)
   });
+
+  ngOnChanges():void{
+  }
+  
   ngOnInit(): void {
     this.i = this.route.snapshot.params['id'];
-    let Task:Task = this.taskService.getTask(this.i);
-    this.id = Task.id;
-    this.getTitle()?.setValue(Task.title)
-    this.getDescription()?.setValue(Task.text)
-    this.day = Task.day;
-    this.reminder = Task.reminder;
-    this.completed = Task.completed;
-    this.getDate()?.setValue(new Date(Task.expire))
-    this.getType()?.setValue(Number(Task.type))
+    this.taskService.getTASK(this.i).subscribe(task=>{
+      this.id = task.id;
+      this.getTitle()?.setValue(task.title)
+      this.getDescription()?.setValue(task.text)
+      this.day = task.day;
+      this.reminder = task.reminder;
+      this.completed = task.completed;
+      this.getDate()?.setValue(new Date(task.expire))
+      this.getType()?.setValue(Number(task.type))
+      this.changeDetector.detectChanges();
+    });
   }
   
   addReminder(){
@@ -59,7 +66,7 @@ export class EditTaskComponent implements OnInit {
       type: this.getType()?.getRawValue()
     };
     this.taskService.editTask(task).subscribe(resp=>{
-      console.log('good')
+      this.router.navigate([""])
     });
   }
 

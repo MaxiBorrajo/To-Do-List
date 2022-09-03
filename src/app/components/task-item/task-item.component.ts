@@ -22,20 +22,11 @@ export class TaskItemComponent implements OnInit {
   faTrashCan = faTrashCan
   faPenToSquare = faPenToSquare
   isChecked:boolean = false;
+  
   checked(task:Task){
     this.isChecked = !this.isChecked;
-    let Task: Task = {
-      id: task.id,
-      title: task.title,
-      text: task.text,
-      day: task.day,
-      time: task.time,
-      reminder: task.reminder,
-      completed: !task.completed,
-      expire: task.expire,
-      type: task.type
-    }
-    this.taskService.editTask(Task).subscribe(resp=>{
+    this.task.completed = this.isChecked;
+    this.taskService.updateCompleted(task).subscribe(resp=>{
       console.log('good')
     });
   }
@@ -57,8 +48,8 @@ export class TaskItemComponent implements OnInit {
   isLate(){
     let daysLateMs = Number(this.today) - Number(this.expireDate())
     let oneDayMs = 86400000
-    let daysLate = Math.round(daysLateMs/oneDayMs)
-    return daysLate > 0
+    let daysLate = daysLateMs/oneDayMs
+    return daysLate > 1
   }
 
   daysLate(){
@@ -66,5 +57,9 @@ export class TaskItemComponent implements OnInit {
     let oneDayMs = 86400000
     let daysLate = Math.round(daysLateMs/oneDayMs)
     return daysLate
+  }
+
+  goToEditTask(task:Task){
+    this.router.navigate(['/editTask', task.id]);
   }
  }

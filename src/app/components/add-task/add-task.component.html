@@ -54,15 +54,14 @@
                 <p>You need to choose a valid date</p>
             </div>
         </div>
-        <button type="submit" class="btn" (click)="addTask()"
-         [routerLink]="['']" 
+        <button type="submit" class="btn" (click)="addTask()" 
          [disabled]="(getDate()?.invalid && reminder) ||
           (getTitle()?.invalid && getTitle()?.touched)
            || getTitle()?.value == '' || getDescription()?.errors?.['maxlength']" 
           [class.disable]="(getDate()?.invalid && reminder) ||
            (getTitle()?.invalid && getTitle()?.touched)
             || getTitle()?.value == '' || getDescription()?.errors?.['maxlength']">
-           Add
+            Add
         </button>
     </form>
 </div>

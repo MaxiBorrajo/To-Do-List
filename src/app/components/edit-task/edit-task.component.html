@@ -47,7 +47,6 @@
             </div>
         </div>
         <button type="submit" class="btn" (click)="saveChanges()"
-         [routerLink]="['']" 
          [disabled]="(getDate()?.invalid && reminder) ||
           (getTitle()?.invalid && getTitle()?.touched)
            || getTitle()?.value == '' " 

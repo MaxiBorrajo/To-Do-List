@@ -5,11 +5,11 @@
       "title": "Go to run",
       "text": "Run 10000 km",
       "day": "21/08/2022",
-      "time": "15:01",
+      "time": "",
       "reminder": true,
-      "completed": false,
-      "expire": "2022-08-21T18:02:34.831Z",
-      "type": 2
+      "completed": true,
+      "expire": "2022-09-30T03:00:00.000Z",
+      "type": 0
     },
     {
       "id": 2,
@@ -18,20 +18,42 @@
       "day": "21/08/2022",
       "time": "15:03",
       "reminder": true,
-      "completed": false,
+      "completed": true,
       "expire": "2022-08-22T03:00:00.000Z",
       "type": 1
     },
     {
       "id": 3,
-      "title": "Sleep",
-      "text": "8 hours",
-      "day": "21/08/2022",
-      "time": "15:10",
+      "title": "Ir a boxeo",
+      "text": "Vamos a trabajar velocidad y resistencia por 1 hora y media",
+      "day": "31/08/2022",
+      "time": "",
       "reminder": true,
-      "completed": false,
-      "expire": "2022-08-04T03:00:00.000Z",
+      "completed": true,
+      "expire": "2022-09-03T03:00:00.000Z",
+      "type": 2
+    },
+    {
+      "id": 4,
+      "title": "Comprar laptop",
+      "text": "con gb ram y tarjeta nvidia, con intel core i9 de novena generación",
+      "day": "31/08/2022",
+      "time": "",
+      "reminder": true,
+      "completed": true,
+      "expire": "2045-12-06T03:00:00.000Z",
       "type": 0
+    },
+    {
+      "id": 5,
+      "title": "Matar gente",
+      "text": "unos 30, especialmente niños",
+      "day": "3/09/2022",
+      "time": "11:13",
+      "reminder": true,
+      "completed": true,
+      "expire": "2022-09-04T03:00:00.000Z",
+      "type": 1
     }
   ]
 }

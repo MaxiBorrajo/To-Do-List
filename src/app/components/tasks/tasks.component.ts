@@ -8,6 +8,7 @@ import { TaskService } from 'src/app/service/task.service';
 })
 export class TasksComponent implements OnInit {
   Tasks: Task[] = []
+  
   constructor( private taskService: TaskService) { }
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(tasks=>{
@@ -20,5 +21,4 @@ export class TasksComponent implements OnInit {
       this.Tasks = this.Tasks.filter((t) => t.id !== task.id)
     })
   }
-
 }

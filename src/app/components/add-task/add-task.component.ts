@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from 'src/app/task';
 import { TaskService } from 'src/app/service/task.service';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateValidation } from '../add-task/dateValidation'
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-add-task',
@@ -12,8 +13,9 @@ import { DateValidation } from '../add-task/dateValidation'
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
+
   addNewTask = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+    title: new FormControl('', [Validators.required, Validators.maxLength(30)]),
     description: new FormControl('', Validators.maxLength(880)),
     date: new FormControl(new Date(), DateValidation.isValid),
     type: new FormControl(0)
@@ -24,10 +26,11 @@ export class AddTaskComponent implements OnInit {
   active:boolean = false;
   today:any = new Date();
   currentDate:Date = new Date(this.today.getFullYear(), this.today.getMonth(), (this.today.getDate()+1))
-  constructor(private router:Router, private taskService:TaskService) {}
+  constructor(private changeDetector:ChangeDetectorRef, private router:Router, private taskService:TaskService) {}
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(tasks=>{
-      this.Tasks = tasks
+      this.Tasks = tasks;
+      this.changeDetector.detectChanges();
     })
   }
   addDeadline(){
@@ -40,6 +43,7 @@ export class AddTaskComponent implements OnInit {
 
   addReminder(){
     this.reminder = !this.reminder
+    this.changeDetector.detectChanges();
   }
 
   setId(){
@@ -78,10 +82,11 @@ export class AddTaskComponent implements OnInit {
       expire: this.isReminder(),
       type: this.getType()?.getRawValue(),
     }
-    this.addNewTask.get('date')?.reset(new Date())
+    this.addNewTask.get('date')?.reset(this.today)
     this.taskService.addTask(task).subscribe(resp=>{
-      console.log('good')
-    });
+      this.router.navigate([""])
+      this.changeDetector.detectChanges();
+    })
   }
 
   getTitle(){
@@ -99,12 +104,15 @@ export class AddTaskComponent implements OnInit {
 
   setImportant(){
     this.getType()?.setValue(1)
+    this.changeDetector.detectChanges();
   }
   setTask(){
     this.getType()?.setValue(0)
+    this.changeDetector.detectChanges();
   }
   setNotForget(){
     this.getType()?.setValue(2)
+    this.changeDetector.detectChanges();
   }
 
 }
