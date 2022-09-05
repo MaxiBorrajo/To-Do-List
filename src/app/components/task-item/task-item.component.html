@@ -19,14 +19,14 @@
     <hr>
     <div class="dates">
         <p>Created on <em>{{task.day}}</em> at <em>{{task.time}}</em></p>
-        <div *ngIf="task.reminder && (expireDate() > today)">
+        <div *ngIf="task.reminder && (expireDate() > today) && !equal()">
             <p>Final date: <em>{{task.expire | date:'dd/MM/yy'}}</em> </p>
         </div>
         <div *ngIf="task.reminder && equal()">
             <p>This task expires <strong>today!</strong></p>
         </div>
         <div *ngIf="task.reminder && isLate()">
-            <p><strong>Expired</strong> <em>{{daysLate()}}</em> days ago</p>
+            <p><strong>Expired </strong><em>{{daysLate()}} </em>days ago</p>
         </div>
     </div>
 </div>

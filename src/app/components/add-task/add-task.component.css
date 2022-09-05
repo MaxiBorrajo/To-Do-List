@@ -111,6 +111,7 @@
     font-size: 15px;
     column-gap: 5px;
 }
+
 .Task{
     background-color:#6cc1fa;
     border-radius: 50%;
@@ -140,7 +141,7 @@
     cursor: pointer;
 }
 
-.active{
+.active, .Task:hover, .not-forget:hover, .important:hover{
     outline: 3px solid #f2f3f7
 }
 

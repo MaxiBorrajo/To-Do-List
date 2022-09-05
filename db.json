@@ -1,59 +1,37 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Go to run",
-      "text": "Run 10000 km",
-      "day": "21/08/2022",
-      "time": "",
-      "reminder": true,
-      "completed": true,
-      "expire": "2022-09-30T03:00:00.000Z",
-      "type": 0
-    },
-    {
       "id": 2,
       "title": "Practice angular",
       "text": "Finish task list",
       "day": "21/08/2022",
       "time": "15:03",
       "reminder": true,
-      "completed": true,
+      "completed": false,
       "expire": "2022-08-22T03:00:00.000Z",
       "type": 1
     },
     {
-      "id": 3,
-      "title": "Ir a boxeo",
-      "text": "Vamos a trabajar velocidad y resistencia por 1 hora y media",
-      "day": "31/08/2022",
-      "time": "",
+      "id": 6,
+      "title": "Go to run",
+      "text": "10 km is the goal",
+      "day": "3/09/2022",
+      "time": "15:38",
       "reminder": true,
-      "completed": true,
-      "expire": "2022-09-03T03:00:00.000Z",
+      "completed": false,
+      "expire": "2022-09-30T03:00:00.000Z",
       "type": 2
     },
     {
-      "id": 4,
-      "title": "Comprar laptop",
-      "text": "con gb ram y tarjeta nvidia, con intel core i9 de novena generación",
-      "day": "31/08/2022",
-      "time": "",
-      "reminder": true,
-      "completed": true,
-      "expire": "2045-12-06T03:00:00.000Z",
-      "type": 0
-    },
-    {
-      "id": 5,
-      "title": "Matar gente",
-      "text": "unos 30, especialmente niños",
+      "id": 7,
+      "title": "Practice sql",
+      "text": "",
       "day": "3/09/2022",
-      "time": "11:13",
+      "time": "15:38",
       "reminder": true,
-      "completed": true,
-      "expire": "2022-09-04T03:00:00.000Z",
-      "type": 1
+      "completed": false,
+      "expire": "2022-09-03T18:40:33.452Z",
+      "type": 0
     }
   ]
 }
